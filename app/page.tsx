@@ -17,6 +17,16 @@ interface HomePageProps {
   }>;
 }
 
+export async function generateMetadata({ searchParams }: HomePageProps) {
+  const params = await searchParams;
+  return {
+    title: `${getTitle({
+      ...params,
+      remote: params.remote === "true",
+    })} | FlowJobs`,
+  };
+}
+
 function getTitle({ q, type, location, remote }: JobFilterValues) {
   const titlePrefix = q
     ? `${q} jobs`
@@ -38,7 +48,6 @@ export default async function Home({ searchParams }: HomePageProps) {
   };
   return (
     <>
-      {/* <Navbar /> */}
       <main className="m-auto my-10 max-w-5xl space-y-10 px-3">
         <div className="space-y-5 text-center">
           <H1>{getTitle(filterValues)}</H1>

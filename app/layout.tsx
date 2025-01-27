@@ -12,8 +12,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Job Seek",
-  description: "A basic Next application for your project",
+  title: {
+    default: "FlowJobs",
+    template: "%s | FlowJobs",
+  },
+  description: "Find your dream jobs",
 };
 
 export default function RootLayout({

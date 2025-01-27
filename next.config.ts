@@ -4,14 +4,11 @@ const nextConfig: NextConfig = {
   /* config options here */
   images: {
     remotePatterns: [
-      /**
-       * //add external image url, etc
-       * {
-       *   protocol: "https",
-       *   hostname: "ik.imagekit.io",
-       *   port: "",
-       * }
-       */
+      {
+        protocol: "https",
+        hostname: "cxynzlvx5hoav5tl.public.blob.vercel-storage.com",
+        port: "",
+      },
     ],
   },
   experimental: {

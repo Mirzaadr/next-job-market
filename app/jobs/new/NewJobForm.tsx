@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { createJobPosting } from "@/lib/actions/jobs";
 import { jobTypes, locationTypes } from "@/lib/jobTypes";
 import { createJobSchema, CreateJobValues } from "@/lib/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -22,6 +23,7 @@ import { X } from "lucide-react";
 import { draftToMarkdown } from "markdown-draft-js";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 type Props = {
   name?: string;
@@ -44,7 +46,24 @@ const NewJobForm = (props: Props) => {
   });
 
   async function onSubmit(values: CreateJobValues) {
-    alert(JSON.stringify(values, null, 2));
+    const formData = new FormData();
+
+    Object.entries(values).forEach(([key, value]) => {
+      if (value) {
+        formData.append(key, value);
+      }
+    });
+
+    try {
+      await createJobPosting(formData);
+    } catch (error) {
+      if (process.env.NODE_ENV === "development") {
+        console.error(JSON.stringify(error));
+      }
+      toast.error("Error", {
+        description: "Something went wrong. please try again later.",
+      });
+    }
   }
   return (
     <main className="m-auto my-10 max-w-3xl space-y-10">

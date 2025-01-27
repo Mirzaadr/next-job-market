@@ -8,25 +8,25 @@ const font = Poppins({
 
 const Logo = () => {
   return (
-    <div className='hidden md:flex items-center gap-x-2 justify-center'>
+    <div className="hidden items-center justify-center gap-x-2 md:flex">
       <Image
-        src="/next.svg"
-        alt='logo'
+        src="/logo.svg"
+        alt="logo"
         height={30}
         width={70}
-        className='dark:hidden'
+        className="dark:hidden"
       />
       <Image
-        src="/next.svg"
-        alt='logo-dark'
+        src="/logo.svg"
+        alt="logo-dark"
         height={30}
         width={70}
-        className='hidden dark:block'
+        className="hidden dark:block"
       />
-      
+
       {/* <p className={cn("font-semibold mt-2", font.className)}>Logo</p> */}
     </div>
-  )
+  );
 }
 
 export default Logo;

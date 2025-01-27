@@ -1,28 +1,41 @@
 import AuthButton from "@/components/auth/AuthButton";
+import H1 from "@/components/common/h1";
 import Navbar from "@/components/common/Navbar";
+import JobFilterSidebar from "@/components/JobFilterSidebar";
+import JobListItem from "@/components/JobListItem";
+import JobResults from "@/components/JobResults";
 import { Button } from "@/components/ui/button";
+import { db } from "@/lib/prisma";
+import { JobFilterValues } from "@/lib/validations";
 
-export default function Home() {
+interface HomePageProps {
+  searchParams: Promise<{
+    q?: string;
+    type?: string;
+    location?: string;
+    remote?: string;
+  }>;
+}
+
+export default async function Home({ searchParams }: HomePageProps) {
+  const params = await searchParams;
+  const filterValues: JobFilterValues = {
+    ...params,
+    remote: params.remote === "true",
+  };
   return (
     <>
-      <Navbar />
-      <main className="flex h-full flex-col items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-400 to-blue-800">
-        <div className="space-y-6 items-center justify-center">
-          <h1 className="text-6xl font-semibold text-white drop-shadow-md">Basic App</h1>
-          <p className="text-white text-lg">
-            A Basic NextJS Application. 
-            This showcase a basic nextjs application with authorization and basic ui components.
-          </p>
-          <div>
-            <AuthButton asChild>
-              <Button>
-                Get Started
-              </Button>
-            </AuthButton>
-          </div>
+      {/* <Navbar /> */}
+      <main className="m-auto my-10 max-w-5xl space-y-10 px-3">
+        <div className="space-y-5 text-center">
+          <H1>Developer Jobs</H1>
+          <p className="text-muted-foreground">Find your dream job</p>
         </div>
+        <section className="flex flex-col gap-4 md:flex-row">
+          <JobFilterSidebar defaultValues={filterValues} />
+          <JobResults filterValues={filterValues} />
+        </section>
       </main>
     </>
-    
   );
 }

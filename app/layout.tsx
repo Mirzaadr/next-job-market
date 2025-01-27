@@ -4,6 +4,8 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { SessionProvider } from "@/components/providers/SessionProvider"; // use custom provider because the provider from library does not update when login
 import { ThemeProvider } from "next-themes";
+import Navbar from "@/components/common/Navbar";
+import Footer from "@/components/common/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,7 +32,9 @@ export default function RootLayout({
             disableTransitionOnChange
             storageKey="app-theme-2"
           >
+            <Navbar />
             {children}
+            <Footer />
             <Toaster position="bottom-center" />
           </ThemeProvider>
         </SessionProvider>

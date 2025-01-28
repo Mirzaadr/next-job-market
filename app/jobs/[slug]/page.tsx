@@ -25,7 +25,7 @@ export async function generateStaticParams() {
     select: { slug: true },
   });
 
-  return jobs.map(({ slug }) => slug);
+  return jobs;
 }
 
 export async function generateMetadata({

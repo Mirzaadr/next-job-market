@@ -23,3 +23,9 @@ export function toSlug(str: string) {
     .replace(/ /g, "-")
     .replace(/[^\w-]+/g, "");
 }
+
+export function routeMatcher(path: string, currentPath: string) {
+  const regex = new RegExp(`^${path}$`);
+
+  return regex.test(currentPath);
+}

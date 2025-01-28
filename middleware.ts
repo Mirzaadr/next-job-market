@@ -7,6 +7,7 @@ import {
   DEFAULT_LOGIN_REDIRECT,
   publicRoutes,
 } from "@/lib/settings";
+import { routeMatcher } from "./lib/utils";
 
 const { auth } = NextAuth(authConfig);
 
@@ -15,7 +16,10 @@ export default auth((req) => {
   const isLoggedIn = !!req.auth;
 
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
-  const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
+  // const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
+  const isPublicRoute = publicRoutes.some((path) =>
+    routeMatcher(path, nextUrl.pathname),
+  );
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
   if (isApiAuthRoute) {
@@ -38,7 +42,7 @@ export default auth((req) => {
     const encodedCallbackUrl = encodeURIComponent(callbackUrl);
 
     return Response.redirect(
-      new URL(`/auth/signin?callbackUrl=${encodedCallbackUrl}`, nextUrl)
+      new URL(`/auth/signin?callbackUrl=${encodedCallbackUrl}`, nextUrl),
     );
   }
 

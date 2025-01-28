@@ -1,11 +1,6 @@
-import AuthButton from "@/components/auth/AuthButton";
 import H1 from "@/components/common/h1";
-import Navbar from "@/components/common/Navbar";
 import JobFilterSidebar from "@/components/JobFilterSidebar";
-import JobListItem from "@/components/JobListItem";
 import JobResults from "@/components/JobResults";
-import { Button } from "@/components/ui/button";
-import { db } from "@/lib/prisma";
 import { JobFilterValues } from "@/lib/validations";
 
 interface HomePageProps {
@@ -14,6 +9,7 @@ interface HomePageProps {
     type?: string;
     location?: string;
     remote?: string;
+    page?: string;
   }>;
 }
 
@@ -55,7 +51,10 @@ export default async function Home({ searchParams }: HomePageProps) {
         </div>
         <section className="flex flex-col gap-4 md:flex-row">
           <JobFilterSidebar defaultValues={filterValues} />
-          <JobResults filterValues={filterValues} />
+          <JobResults
+            filterValues={filterValues}
+            page={params.page ? parseInt(params.page) : undefined}
+          />
         </section>
       </main>
     </>

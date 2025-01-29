@@ -5,6 +5,7 @@ import LoadingButton from "@/components/common/LoadingButton";
 import Select from "@/components/common/select";
 import LocationInput from "@/components/LocationInput";
 import RichTextEditor from "@/components/RichTextEditor";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -296,9 +297,18 @@ const NewJobForm = (props: Props) => {
                 </FormItem>
               )}
             />
-            <LoadingButton type="submit" loading={form.formState.isSubmitting}>
-              Submit
-            </LoadingButton>
+            <div className="flex space-x-2">
+              <Button variant="outline" className="w-[100px]">
+                Back
+              </Button>
+              <LoadingButton
+                type="submit"
+                loading={form.formState.isSubmitting}
+                className="w-[100px]"
+              >
+                Submit
+              </LoadingButton>
+            </div>
           </form>
         </Form>
       </div>

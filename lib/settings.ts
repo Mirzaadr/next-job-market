@@ -9,6 +9,10 @@ export const publicRoutes = [
   "/jobs",
   "/jobs/.*",
   "/job-submitted",
+  "/about",
+  "/contact",
+  "/privacy",
+  "/terms",
   "/auth/new-verification",
 ];
 

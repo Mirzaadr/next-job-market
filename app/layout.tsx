@@ -35,9 +35,7 @@ export default function RootLayout({
             disableTransitionOnChange
             storageKey="app-theme-2"
           >
-            <Navbar />
             {children}
-            <Footer />
             <Toaster position="bottom-center" />
           </ThemeProvider>
         </SessionProvider>

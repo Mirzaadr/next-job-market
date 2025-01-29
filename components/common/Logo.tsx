@@ -13,15 +13,15 @@ const Logo = () => {
       <Image
         src="/logo.svg"
         alt="logo"
-        height={35}
-        width={35}
+        height={30}
+        width={30}
         className="dark:hidden"
       />
       <Image
         src="/logo.svg"
         alt="logo-dark"
-        height={35}
-        width={35}
+        height={30}
+        width={30}
         className="hidden dark:block"
       />
 

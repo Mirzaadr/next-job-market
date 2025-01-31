@@ -10,12 +10,7 @@ export const metadata: Metadata = {
 };
 
 const AdminLayout = ({ children }: AdminLayoutProps) => {
-  return (
-    <div className="">
-      <AdminNavbar />
-      {children}
-    </div>
-  );
+  return <div className="">{children}</div>;
 };
 
 export default AdminLayout;

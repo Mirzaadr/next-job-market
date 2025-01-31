@@ -3,7 +3,7 @@ import Footer from "@/components/common/Footer";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="">
+    <div className="min-h-screen">
       <Navbar />
       {children}
       <Footer />

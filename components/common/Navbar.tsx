@@ -8,6 +8,7 @@ import UserButton from "@/components/auth/UserButton";
 import AuthButton from "@/components/auth/AuthButton";
 import Logo from "./Logo";
 import { DEFAULT_LOGIN_REDIRECT } from "@/lib/settings";
+import { ModeToggle } from "./ModeToggle";
 
 const Navbar = () => {
   return (
@@ -21,9 +22,13 @@ const Navbar = () => {
         <Link href="/" className="flex items-center">
           <Logo />
         </Link>
-        <Button asChild>
+        {/* <Button asChild>
           <Link href="/jobs/new">Post a job</Link>
-        </Button>
+        </Button> */}
+        <div className="flex items-center gap-x-2">
+          <ModeToggle />
+          <UserButton />
+        </div>
       </nav>
     </header>
   );

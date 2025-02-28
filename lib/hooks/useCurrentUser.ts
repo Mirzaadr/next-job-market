@@ -3,23 +3,6 @@ import { auth } from "../auth";
 import { useSession } from "next-auth/react";
 
 /**
- * A function to get current user and redirect to
- * login page if user does not exist.
- * To be used on server component only.
- * @name currentUser
- * @function
- */
-export const currentUser = async () => {
-  const session = await auth();
-
-  if (!session?.user) {
-    return redirect("/");
-  }
-
-  return session.user;
-};
-
-/**
  * A hook that is used to get the current user.
  * To be used on client component.
  * @name useCurrentUser

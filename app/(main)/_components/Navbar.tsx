@@ -1,8 +1,6 @@
 "use client"
 import UserButton from '@/components/auth/UserButton';
 import { ModeToggle } from '@/components/common/ModeToggle';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation'
 import React from 'react'
 
